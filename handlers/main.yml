@@ -1,5 +1,13 @@
 ---
 # handlers file for timezone
-- name: reconfigure tzdata
-  command: dpkg-reconfigure --frontend=noninteractive tzdata
-...
+- name: timedatectl set-timezone
+  command: 'timedatectl set-timezone {{ timezone }}'
+  when:
+    - ansible_virtualization_type != 'lxc'
+
+- name: cron restart
+  service:
+    name: cron
+    state: restarted
+  when:
+    - ansible_facts.services['cron']['state'] == 'running'
