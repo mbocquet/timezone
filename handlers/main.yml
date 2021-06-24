@@ -10,4 +10,5 @@
     name: cron
     state: restarted
   when:
+    - "'cron' in services"
     - ansible_facts.services['cron']['state'] == 'running'

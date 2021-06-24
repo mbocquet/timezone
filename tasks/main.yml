@@ -1,28 +1,29 @@
 ---
 # tasks file for timezone
-- name: block
-  block:
-    - name: service_facts
-      service_facts:
+- name: service_facts
+  service_facts:
+  tags:
+    - timezone
+    - facts
 
-    - name: /etc/localtime
-      file:
-        src: /usr/share/zoneinfo/{{ timezone }}
-        dest: /etc/localtime
-        state: link
-      notify:
-        - timedatectl set-timezone
-        - cron restart
-      tags:
-        - timezone
-        - localtime
+- name: /etc/localtime
+  file:
+    src: /usr/share/zoneinfo/{{ timezone }}
+    dest: /etc/localtime
+    state: link
+  notify:
+    - timedatectl set-timezone
+    - cron restart
+  tags:
+    - timezone
+    - localtime
 
-    - name: /etc/timezone
-      template:
-        src: timezone.j2
-        dest: /etc/timezone
-      notify:
-        - timedatectl set-timezone
-        - cron restart
-      tags:
-        - timezone
+- name: /etc/timezone
+  template:
+    src: timezone.j2
+    dest: /etc/timezone
+  notify:
+    - timedatectl set-timezone
+    - cron restart
+  tags:
+    - timezone
