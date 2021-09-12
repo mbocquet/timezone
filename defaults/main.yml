@@ -1,5 +1,7 @@
 ---
 # defaults file for timezone
-# default value. Customized version should reside in inventory group_vars or host_vars files
+
+# default value. Customized version should reside in inventory group_vars or
+# host_vars files
+
 timezone: 'Etc/UTC'
-...
