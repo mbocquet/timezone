@@ -22,6 +22,7 @@
   template:
     src: timezone.j2
     dest: /etc/timezone
+    mode: 0644
   notify:
     - timedatectl set-timezone
     - cron restart
