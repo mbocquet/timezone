@@ -1,6 +1,6 @@
 ---
 # handlers file for timezone
-- name: timedatectl set-timezone
+- name: Set-timezone
   command: 'timedatectl set-timezone {{ timezone }}'
   when:
     - ansible_virtualization_type != 'lxc'
