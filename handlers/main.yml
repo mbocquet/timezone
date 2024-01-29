@@ -5,7 +5,7 @@
   when:
     - ansible_virtualization_type != 'lxc'
 
-- name: cron restart
+- name: Cron restart
   service:
     name: cron
     state: restarted

@@ -12,8 +12,8 @@
     dest: /etc/localtime
     state: link
   notify:
-    - timedatectl set-timezone
-    - cron restart
+    - Set-timezone
+    - Cron restart
   tags:
     - timezone
     - localtime
@@ -24,7 +24,7 @@
     dest: /etc/timezone
     mode: 0644
   notify:
-    - timedatectl set-timezone
-    - cron restart
+    - Set-timezone
+    - Cron restart
   tags:
     - timezone
