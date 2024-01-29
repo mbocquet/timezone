@@ -1,6 +1,6 @@
 'timezone'. Ansible role to configure timezone.
 
-Copyright © 2019 Mathias Bocquet (mbocquet@sekoya.org)
+Copyright © 2019-2024 Mathias Bocquet (mbocquet@sekoya.org)
 
 This file is part of 'timezone' Ansible role.
 
