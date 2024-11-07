@@ -2,7 +2,7 @@
 # handlers file for timezone
 - name: Set timezone
   community.general.timezone:
-    name: "{{ timezone }}"
+    name: "{{ timezone_tz }}"
   when:
     - ansible_virtualization_type != 'lxc'
 

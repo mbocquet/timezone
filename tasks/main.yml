@@ -8,7 +8,7 @@
 
 - name: /etc/localtime
   ansible.builtin.file:
-    src: "/usr/share/zoneinfo/{{ timezone }}"
+    src: "/usr/share/zoneinfo/{{ timezone_tz }}"
     dest: /etc/localtime
     state: link
   notify:

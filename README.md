@@ -22,7 +22,7 @@ None.
 
     - hosts: servers
       roles:
-         - { role: timezone, timezone: 'Europe/Paris' }
+         - { role: timezone, timezone_tz: 'Europe/Paris' }
 
 ## License
 
