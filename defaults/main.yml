@@ -4,4 +4,4 @@
 # default value. Customized version should reside in inventory group_vars or
 # host_vars files
 
-timezone: 'Etc/UTC'
+timezone_tz: "Etc/UTC"

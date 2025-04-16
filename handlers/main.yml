@@ -1,12 +1,13 @@
 ---
 # handlers file for timezone
-- name: timedatectl set-timezone
-  command: 'timedatectl set-timezone {{ timezone }}'
+- name: Set timezone
+  community.general.timezone:
+    name: "{{ timezone_tz }}"
   when:
     - ansible_virtualization_type != 'lxc'
 
-- name: cron restart
-  service:
+- name: Cron restart
+  ansible.builtin.service:
     name: cron
     state: restarted
   when:

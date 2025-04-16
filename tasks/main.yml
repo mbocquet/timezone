@@ -1,29 +1,30 @@
 ---
 # tasks file for timezone
-- name: service_facts
-  service_facts:
+- name: Service facts
+  ansible.builtin.service_facts:
   tags:
     - timezone
     - facts
 
 - name: /etc/localtime
-  file:
-    src: /usr/share/zoneinfo/{{ timezone }}
+  ansible.builtin.file:
+    src: "/usr/share/zoneinfo/{{ timezone_tz }}"
     dest: /etc/localtime
     state: link
   notify:
-    - timedatectl set-timezone
-    - cron restart
+    - Set timezone
+    - Cron restart
   tags:
     - timezone
     - localtime
 
 - name: /etc/timezone
-  template:
+  ansible.builtin.template:
     src: timezone.j2
     dest: /etc/timezone
+    mode: 0644
   notify:
-    - timedatectl set-timezone
-    - cron restart
+    - Set timezone
+    - Cron restart
   tags:
     - timezone
