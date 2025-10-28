@@ -22,7 +22,7 @@
   ansible.builtin.template:
     src: timezone.j2
     dest: /etc/timezone
-    mode: 0644
+    mode: "0644"
   notify:
     - Set timezone
     - Cron restart
