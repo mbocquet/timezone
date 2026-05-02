@@ -6,11 +6,14 @@
     - timezone
     - facts
 
-- name: /etc/localtime
+- name: Localtime file
   ansible.builtin.file:
     src: /usr/share/zoneinfo/{{ timezone_tz }}
     dest: /etc/localtime
     state: link
+  when:
+    - not ansible_distribution_major_version is string
+    - ansible_distribution_major_version is version('13', '>')
   notify:
     - Set timezone
     - Cron restart
@@ -18,7 +21,7 @@
     - timezone
     - localtime
 
-- name: /etc/timezone
+- name: Timezone file
   ansible.builtin.template:
     src: timezone.j2
     dest: /etc/timezone
